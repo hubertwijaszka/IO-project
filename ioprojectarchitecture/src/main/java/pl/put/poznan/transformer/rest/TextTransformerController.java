@@ -3,6 +3,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.transformer.logic.scenario;
 
 import java.util.Arrays;
 
@@ -28,15 +29,21 @@ public class TextTransformerController {
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public String post(@PathVariable String text,
-                      @RequestBody String[] transforms) {
+                       @RequestBody scenario obiekt
+            /*String[] transforms*/) {
 
         // log the parameters
         logger.debug(text);
-        logger.debug(Arrays.toString(transforms));
+      //  logger.debug(Arrays.toString(transforms));
 
         // do the transformation, you should run your logic here, below just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+  //      TextTransformer transformer = new TextTransformer(transforms);
+
+        //System.out.print(obiekt.kroki[0].nazwakroku);
+        //System.out.print(obiekt.kroki[1].nazwakroku);
+
+        //return transformer.transform(text);
+        return obiekt.actors[1];
     }
 
 
