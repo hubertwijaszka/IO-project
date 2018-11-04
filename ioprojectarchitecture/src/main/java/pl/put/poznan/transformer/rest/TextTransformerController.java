@@ -42,7 +42,29 @@ public class TextTransformerController {
         //System.out.print(obiekt.kroki[0].nazwakroku);
         //System.out.print(obiekt.kroki[1].nazwakroku);
         //return transformer.transform(text);
-        return obiekt.actors[1];
+        int i,j;
+        System.out.println("Tytuł: "+obiekt.title);
+        System.out.print("Aktorzy: ");
+        for(j=0;j<obiekt.actors.length;j++)
+        {
+            System.out.print(obiekt.actors[j]+ ", ");
+        }
+        System.out.println();
+        System.out.println("Aktor systemowy: "+obiekt.systemActor);
+
+        for (i=0;i<obiekt.steps.length;i++)
+        {
+            System.out.print(obiekt.steps[i].text+" : ");
+            for(j=0;j<obiekt.steps[i].substeps.length;j++)
+            {
+                System.out.print(obiekt.steps[i].substeps[j].text+",");
+            }
+            System.out.println();
+        }
+
+
+
+        return obiekt.steps[0].substeps[0].text; //jakis string
     }
 
 

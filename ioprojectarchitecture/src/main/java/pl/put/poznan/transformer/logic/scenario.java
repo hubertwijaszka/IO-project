@@ -4,5 +4,5 @@ public class scenario {
     public String title;
     public String actors[];
     public String systemActor;
-    public steps kroki[];
+    public steps steps[];
 }
