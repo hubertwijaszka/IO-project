@@ -41,7 +41,6 @@ public class TextTransformerController {
 
         //System.out.print(obiekt.kroki[0].nazwakroku);
         //System.out.print(obiekt.kroki[1].nazwakroku);
-
         //return transformer.transform(text);
         return obiekt.actors[1];
     }
