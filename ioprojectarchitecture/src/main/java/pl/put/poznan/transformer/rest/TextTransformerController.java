@@ -62,9 +62,19 @@ public class TextTransformerController {
             System.out.println();
         }
 
+        int[] sumy={0,0},pom;
+        for(i=0;i<obiekt.steps.length;i++)
+        {
+            pom=obiekt.slowa_kluczowe(obiekt.steps[i]);
+            sumy[0]+=pom[0];
+            sumy[1]+=pom[1];
+        }
+        System.out.println(" W scenariuszu "+sumy[0]+" krokow i podkrokow zawiera slowa kluczowe");
+        System.out.println(" W scenariuszu jest "+sumy[1]+" slow kluczowych");
 
 
-        return obiekt.steps[0].substeps[0].text; //jakis string
+        System.out.println(obiekt.zaczyna_sie_od_slowaklucz(obiekt.steps[0].substeps[0].text));
+        return "ok ;)"; //jakis string
     }
 
 
