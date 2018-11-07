@@ -12,6 +12,7 @@ import java.util.Arrays;
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
+    private static ScenarioSerwis scenarioSerwis;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@PathVariable String text,
@@ -28,7 +29,7 @@ public class TextTransformerController {
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public String post(@PathVariable String text,
-                       @RequestBody scenario obiekt
+                       @RequestBody Scenario obiekt
             /*String[] transforms*/) {
 
         // log the parameters
@@ -38,10 +39,10 @@ public class TextTransformerController {
         // do the transformation, you should run your logic here, below just a silly example
 
         //inicjalizacja wartosci zmiennych globalnych
-        zmienne_globalne.liczba_keywords=0;
-        zmienne_globalne.ile_steps_ma_keywords=0;
-        zmienne_globalne.ile_krokow=0;
-        zmienne_globalne.wadliwekroki= new ArrayList<String>();
+        ZmienneGlobalne.liczba_keywords=0;
+        ZmienneGlobalne.ile_steps_ma_keywords=0;
+        ZmienneGlobalne.ile_krokow=0;
+        ZmienneGlobalne.wadliwekroki= new ArrayList<String>();
 
         int i,j;
         System.out.println("Tytuł: "+obiekt.title);
@@ -61,17 +62,17 @@ public class TextTransformerController {
         }
 
         System.out.println("Statystyki: ");
-        System.out.println("Liczba krokow: "+zmienne_globalne.ile_krokow);
-        System.out.println("Liczba podkrokow: "+(zmienne_globalne.ile_krokow-obiekt.steps.length));
-        System.out.println("Liczba krokow zawierająca slowo kluczowe: "+zmienne_globalne.ile_steps_ma_keywords);
-        System.out.println("Liczba slow kluczowych: "+zmienne_globalne.liczba_keywords);
+        System.out.println("Liczba krokow: "+ ZmienneGlobalne.ile_krokow);
+        System.out.println("Liczba podkrokow: "+(ZmienneGlobalne.ile_krokow-obiekt.steps.length));
+        System.out.println("Liczba krokow zawierająca slowo kluczowe: "+ ZmienneGlobalne.ile_steps_ma_keywords);
+        System.out.println("Liczba slow kluczowych: "+ ZmienneGlobalne.liczba_keywords);
 
         System.out.println("Wadliwe kroki dla aktora systemowego = "+obiekt.systemActor);
-        for(i=0;i<zmienne_globalne.wadliwekroki.size();i++)
+        for(i=0; i< ZmienneGlobalne.wadliwekroki.size(); i++)
         {
-            System.out.print(zmienne_globalne.wadliwekroki.get(i)+", ");
+            System.out.print(ZmienneGlobalne.wadliwekroki.get(i)+", ");
         }
-        zmienne_globalne.wadliwekroki.clear();
+        ZmienneGlobalne.wadliwekroki.clear();
 
         return "ok ;)"; //jakis string
     }

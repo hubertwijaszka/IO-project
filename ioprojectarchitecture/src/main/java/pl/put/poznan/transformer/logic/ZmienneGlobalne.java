@@ -2,7 +2,7 @@ package pl.put.poznan.transformer.logic;
 
 import java.util.List;
 
-public class zmienne_globalne {
+public class ZmienneGlobalne {
     public static String[] keywords={"IF","ELSE","FOR EACH"};
     public static int liczba_keywords; //ogolna liczba slow kluczowych
     public static int ile_steps_ma_keywords;// liczba krokow zawierajacych co najmniej jedno slowo kluczowe
