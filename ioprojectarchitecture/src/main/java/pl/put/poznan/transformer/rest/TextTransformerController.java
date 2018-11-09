@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
-    private static ScenarioSerwis scenarioSerwis;
+    private ScenarioSerwis scenarioSerwis;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@PathVariable String text,
@@ -27,7 +27,7 @@ public class TextTransformerController {
         return transformer.transform(text);
     }
 
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(method = RequestMethod.POST, produces = "application/json",consumes = "application/json")
     public String post(@PathVariable String text,
                        @RequestBody Scenario obiekt
             /*String[] transforms*/) {
@@ -38,42 +38,34 @@ public class TextTransformerController {
 
         // do the transformation, you should run your logic here, below just a silly example
 
-        //inicjalizacja wartosci zmiennych globalnych
-        ZmienneGlobalne.liczba_keywords=0;
-        ZmienneGlobalne.ile_steps_ma_keywords=0;
-        ZmienneGlobalne.ile_krokow=0;
-        ZmienneGlobalne.wadliwekroki= new ArrayList<String>();
+
 
         int i,j;
-        System.out.println("Tytuł: "+obiekt.title);
+        Wynik w;
+        ScenarioSerwis s = new ScenarioSerwis();
+        System.out.printf("Tytuł: %s%n",obiekt.getTitle());
         System.out.print("Aktorzy: ");
-        for(j=0;j<obiekt.actors.length;j++)
+        for(j=0;j<obiekt.getActors().length;j++)
         {
-            System.out.print(obiekt.actors[j]+ ", ");
+            System.out.print(obiekt.getActors()[j]+ ", ");
         }
         System.out.println();
-        System.out.println("Aktor systemowy: "+obiekt.systemActor);
-
+        System.out.println("Aktor systemowy: "+obiekt.getSystemActor());
 
         //przejdz po WSZYSTKICH krokach scenariusza
-        for(i=0;i<obiekt.steps.length;i++)
-        {
-            obiekt.przeszukiwanie(obiekt.steps[i]);
-        }
+        w=s.ileJest(obiekt);
 
         System.out.println("Statystyki: ");
-        System.out.println("Liczba krokow: "+ ZmienneGlobalne.ile_krokow);
-        System.out.println("Liczba podkrokow: "+(ZmienneGlobalne.ile_krokow-obiekt.steps.length));
-        System.out.println("Liczba krokow zawierająca slowo kluczowe: "+ ZmienneGlobalne.ile_steps_ma_keywords);
-        System.out.println("Liczba slow kluczowych: "+ ZmienneGlobalne.liczba_keywords);
+        System.out.println("Liczba krokow: "+ w.getRezultat()[2]);
+        System.out.println("Liczba podkrokow: "+(w.getRezultat()[2]-obiekt.getSteps().length));
+        System.out.println("Liczba krokow zawierająca slowo kluczowe: "+ w.getRezultat()[1]);
+        System.out.println("Liczba slow kluczowych: "+ w.getRezultat()[0]);
 
-        System.out.println("Wadliwe kroki dla aktora systemowego = "+obiekt.systemActor);
-        for(i=0; i< ZmienneGlobalne.wadliwekroki.size(); i++)
+        System.out.println("Wadliwe kroki dla aktora systemowego = "+obiekt.getSystemActor());
+        for(i=0; i< w.getWadliweKroki().size(); i++)
         {
-            System.out.print(ZmienneGlobalne.wadliwekroki.get(i)+", ");
+            System.out.print(w.getWadliweKroki().get(i)+", ");
         }
-        ZmienneGlobalne.wadliwekroki.clear();
-
         return "ok ;)"; //jakis string
     }
 }
