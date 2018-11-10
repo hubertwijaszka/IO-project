@@ -28,4 +28,14 @@ public class ScenarioSerwis {
         wynik.setWadliweKroki(w);
         return wynik;
     }
+
+    public String ileKrokow(Scenario scenario){
+        return Integer.toString(ileJest(scenario).getRezultat()[2]);
+    }
+    public String ileSlowKluczowych(Scenario scenario){
+        return Integer.toString(ileJest(scenario).getRezultat()[1]);
+    }
+    public List<String> bledneKroki(Scenario scenario){
+        return ileJest(scenario).getWadliweKroki();
+    }
 }
