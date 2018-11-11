@@ -1,3 +1,8 @@
-C:\Users\hp\Downloads\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\logic\TextTransformer.java
-C:\Users\hp\Downloads\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\app\TextTransformerApplication.java
-C:\Users\hp\Downloads\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\rest\TextTransformerController.java
+/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/app/TextTransformerApplication.java
+/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/Step.java
+/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/TextTransformer.java
+/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/Keyword.java
+/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/Scenario.java
+/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/rest/ScenarioSerwis.java
+/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/rest/TextTransformerController.java
+/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/Wynik.java
