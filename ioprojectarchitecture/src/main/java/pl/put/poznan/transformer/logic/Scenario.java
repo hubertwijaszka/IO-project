@@ -3,45 +3,84 @@ package pl.put.poznan.transformer.logic;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class Scenario made out of json structure
+ */
+
 public class Scenario {
     private String title;
     private String actors[];
     private String systemActor;
     private Step steps[];
 
-   // public Scenario(){}
+    /**
+     * @return title of scenario
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Method sets title of Scenario
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * @return Array conatining actors.
+     */
     public String[] getActors() {
         return actors;
     }
 
+    /**
+     * Method sets actors for scenario
+     * @param actors Array containing new Actors
+     */
     public void setActors(String[] actors) {
         this.actors = actors;
     }
 
+    /**
+     * @return System actor of scenario.
+     */
     public String getSystemActor() {
         return systemActor;
     }
 
+    /**
+     * @param systemActor new SystemActor.
+     */
     public void setSystemActor(String systemActor) {
         this.systemActor = systemActor;
     }
 
+    /**
+     * @return Array conatining steps.
+     */
     public Step[] getSteps() {
         return steps;
     }
 
+    /**
+     * @param steps Array conatining steps.
+     */
     public void setSteps(Step[] steps) {
         this.steps = steps;
     }
 
+    /**
+     * Method checks how many elements in one step
+     * begin with/include keywords.
+     * @param krok Step that we want to check.
+     * @param p Array in which number of keywords,
+     *          steps containing keywords and steps
+     *          in general will be stored.
+     * @param w List in which Steps that do not start with
+     *          keyword will be stored.
+     * @return amount of elements
+     */
     public int przeszukiwanie(Step krok,int[] p,List<String> w) // metoda sprawdza ile elementow w jednym kroku zawiera/zaczyna się od
                                           // słowa kluczowego
                                             //param : 0 -> ile krokow
@@ -69,6 +108,11 @@ public class Scenario {
         return 0;
     }
 
+    /**
+     * Method checks whether the Step starts with a keyword.
+     * @param text Step that we want to check.
+     * @return 1 if keyword found, 0 otherwise.
+     */
     public int zaczynaSieOdSlowaKlucz(String text) {
             //Sprawdzam, czy krok zaczyna się od słowa kluczowego
             Keyword k = new Keyword();
@@ -80,6 +124,11 @@ public class Scenario {
             return wyn;
     }
 
+    /**
+     * Method checks whether the Step conatins the keyword.
+     * @param text Step that we want to check.
+     * @return 1 if keyword found, 0 otherwise.
+     */
     public int zawieraSlowoKluczowe(String text){
         //czy krok.text zawiera jakiekolwiek slowo kluczowe
         Keyword k = new Keyword();
@@ -91,6 +140,12 @@ public class Scenario {
         return wyn;
     }
 
+
+    /**
+     * Counts how many keywords appeared in a particular text
+     * @param text Text that we want to get amount of keywords from.
+     * @return Amount of keywords found.
+     */
     public int ileSlowKluczowych(String text){
         //czy krok.text zawiera jakiekolwiek slowo kluczowe
         Keyword k = new Keyword();
@@ -102,6 +157,12 @@ public class Scenario {
         return wyn;
     }
 
+    /**
+     * Method checks whether the Step starts with a keyword.
+     * @param text Step that we want to check.
+     * @param aktor Actor we want to check our text with.
+     * @return true if text begins with an actor, false otherwise.
+     */
     public boolean nieZaczynaSieOdAktora(String text, String aktor)
     {
         //musze uwzglednic ze moze byc slowo kluczowe
