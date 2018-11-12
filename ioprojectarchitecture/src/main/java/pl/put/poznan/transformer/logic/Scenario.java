@@ -161,6 +161,14 @@ public class Scenario {
         }
         return wyn;
     }
+    /**
+     *
+     checks the correctness of the step
+     * @param text Text we are checking.
+     * @param aktor table with actors.
+     * @param aktorsys String with System actor.
+     * @return true if step is correct.
+     */
 
     public boolean zlyKrok(String text, String[] aktor, String aktorsys) {
         //musze uwzglednic ze moze byc slowo kluczowe

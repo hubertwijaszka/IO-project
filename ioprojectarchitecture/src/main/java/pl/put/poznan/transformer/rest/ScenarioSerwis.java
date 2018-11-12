@@ -55,10 +55,17 @@ public class ScenarioSerwis {
         return Integer.toString(ileJest(scenario).getRezultat()[2]);
     }
     /**
-     * @return List of Keywords
+     * @return Count of Steps with Keywords
+     */
+    public String ileKrokowMaKeyword(Scenario scenario){
+        return Integer.toString(ileJest(scenario).getRezultat()[1]);
+    }
+
+    /**
+     * @return Count of Keywords
      */
     public String ileSlowKluczowych(Scenario scenario){
-        return Integer.toString(ileJest(scenario).getRezultat()[1]);
+        return Integer.toString(ileJest(scenario).getRezultat()[0]);
     }
     /**
      * @return List of Steps that do not start with keywords.
