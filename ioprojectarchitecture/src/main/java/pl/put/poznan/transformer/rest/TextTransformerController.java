@@ -37,6 +37,7 @@ public class TextTransformerController {
     @RequestMapping(value = "bledneKroki", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public List<String> bledneKroki(@RequestBody Scenario scenario) {
         return scenarioSerwis.bledneKroki(scenario);
+
     }
 
     @RequestMapping(value = "ileSlowKluczowych", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")

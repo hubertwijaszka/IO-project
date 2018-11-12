@@ -1,5 +1,7 @@
 package pl.put.poznan.transformer.rest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.put.poznan.transformer.logic.Scenario;
 import pl.put.poznan.transformer.logic.Wynik;
 
@@ -13,6 +15,7 @@ import java.util.List;
  */
 
 public class ScenarioSerwis {
+    private static final Logger logger = LoggerFactory.getLogger(ScenarioSerwis.class);
 
     //metody
     //ile jest wszystkich krokow   p[2]
@@ -29,6 +32,8 @@ public class ScenarioSerwis {
 
     public Wynik ileJest(Scenario obiekt)
     {
+        logger.info("ileJest Begin");
+
         int[] p={0,0,0};int i;
         List<String> w = new ArrayList<>();
         Wynik wynik=new Wynik();
@@ -39,6 +44,7 @@ public class ScenarioSerwis {
         }
         wynik.setRezultat(p);
         wynik.setWadliweKroki(w);
+        logger.info("ileJest End");
         return wynik;
     }
 

@@ -2,6 +2,8 @@ package pl.put.poznan.transformer.logic;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class Scenario made out of json structure
@@ -12,6 +14,7 @@ public class Scenario {
     private String actors[];
     private String systemActor;
     private Step steps[];
+    private static final Logger logger = LoggerFactory.getLogger(Scenario.class);
 
     /**
      * @return title of scenario
@@ -85,6 +88,7 @@ public class Scenario {
                                           // słowa kluczowego
                                             //param : 0 -> ile krokow
     {
+        logger.info("przeszukiwanie Begin");
         //przeszukiwanie grafu
         //sprawdzam, czy krok jest wadliwy ( jest taki, gdy nie zaczyna się od aktora systemowego )
         if(nieZaczynaSieOdAktora(krok.getText(),systemActor)) w.add(krok.getText());
@@ -105,6 +109,8 @@ public class Scenario {
         {
             przeszukiwanie(krok.getSubsteps()[i],p,w);
         }
+        logger.info("przeszukiwanie End");
+
         return 0;
     }
 
@@ -114,14 +120,16 @@ public class Scenario {
      * @return 1 if keyword found, 0 otherwise.
      */
     public int zaczynaSieOdSlowaKlucz(String text) {
-            //Sprawdzam, czy krok zaczyna się od słowa kluczowego
-            Keyword k = new Keyword();
+        logger.info("zaczynaSieOdSlowaKlucz Begin");
+
+        Keyword k = new Keyword();
             int wyn=0;int i;
             for (i=0; i< k.getKeywords().length; i++)
             {
                 if(text.startsWith(k.getKeywords()[i])){wyn=1;break;}
             }
-            return wyn;
+        logger.info("zaczynaSieOdSlowaKlucz End");
+        return wyn;
     }
 
     /**
@@ -131,12 +139,16 @@ public class Scenario {
      */
     public int zawieraSlowoKluczowe(String text){
         //czy krok.text zawiera jakiekolwiek slowo kluczowe
+        logger.info("zawieraSlowoKluczowe Begin");
+
         Keyword k = new Keyword();
         int wyn=0,i;
         for(i=0; i< k.getKeywords().length; i++)
         {
             if (text.contains(k.getKeywords()[i])){wyn=1;break;}
         }
+        logger.info("zawieraSlowoKluczowe End");
+
         return wyn;
     }
 
@@ -148,12 +160,14 @@ public class Scenario {
      */
     public int ileSlowKluczowych(String text){
         //czy krok.text zawiera jakiekolwiek slowo kluczowe
+        logger.info("ileSlowKluczowych Begin");
         Keyword k = new Keyword();
         int wyn=0,i;
         for(i=0; i< k.getKeywords().length; i++)
         {
             if (text.contains(k.getKeywords()[i])){wyn++;}
         }
+        logger.info("ileSlowKluczowych End");
         return wyn;
     }
 
@@ -165,6 +179,8 @@ public class Scenario {
      */
     public boolean nieZaczynaSieOdAktora(String text, String aktor)
     {
+        logger.info("nieZaczynaSieOdAktora Begin");
+
         //musze uwzglednic ze moze byc slowo kluczowe
         Keyword k = new Keyword();
         String org=text;
@@ -180,8 +196,15 @@ public class Scenario {
         while(org.charAt(i)==' '){org=org.replaceFirst(" ","");}
         //org=org.replaceAll(" ","");
         //sprawdzam ,czy krok zaczyna sie od aktora
-        if(org.startsWith(aktor))return false;//success
-        else return true;//porazka, krok nie zaczyna sie od aktora
+
+        if(org.startsWith(aktor)){
+            logger.info("nieZaczynaSieOdAktora End False");
+            return false;}//success
+        else{
+            logger.info("nieZaczynaSieOdAktora End True");
+            return true;//porazka, krok nie zaczyna sie od aktora
+        }
+
     }
 }
 
