@@ -34,6 +34,9 @@ public class TextTransformerController {
         return scenarioSerwis.ileKrokow(scenario);
     }
 
+    @RequestMapping(value = "ileKrokowMaKeyword", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public String ileKrokowMaKeyword(@RequestBody Scenario scenario) {return scenarioSerwis.ileKrokowMaKeyword(scenario);}
+
     @RequestMapping(value = "bledneKroki", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public List<String> bledneKroki(@RequestBody Scenario scenario) {
         return scenarioSerwis.bledneKroki(scenario);

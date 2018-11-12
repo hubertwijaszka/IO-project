@@ -32,8 +32,11 @@ public class ScenarioSerwis {
     public String ileKrokow(Scenario scenario){
         return Integer.toString(ileJest(scenario).getRezultat()[2]);
     }
-    public String ileSlowKluczowych(Scenario scenario){
+    public String ileKrokowMaKeyword(Scenario scenario){
         return Integer.toString(ileJest(scenario).getRezultat()[1]);
+    }
+    public String ileSlowKluczowych(Scenario scenario){
+        return Integer.toString(ileJest(scenario).getRezultat()[0]);
     }
     public List<String> bledneKroki(Scenario scenario){
         return ileJest(scenario).getWadliweKroki();
