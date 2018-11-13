@@ -1,8 +1,8 @@
-/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/app/TextTransformerApplication.java
-/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/Step.java
-/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/TextTransformer.java
-/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/Keyword.java
-/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/Scenario.java
-/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/rest/ScenarioSerwis.java
-/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/rest/TextTransformerController.java
-/home/pener/IdeaProjects/IO-project4/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/Wynik.java
+C:\Users\Staszek\IdeaProjects\IO-project\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\rest\TextTransformerController.java
+C:\Users\Staszek\IdeaProjects\IO-project\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\rest\ScenarioSerwis.java
+C:\Users\Staszek\IdeaProjects\IO-project\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\app\TextTransformerApplication.java
+C:\Users\Staszek\IdeaProjects\IO-project\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\logic\TextTransformer.java
+C:\Users\Staszek\IdeaProjects\IO-project\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\logic\Wynik.java
+C:\Users\Staszek\IdeaProjects\IO-project\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\logic\Keyword.java
+C:\Users\Staszek\IdeaProjects\IO-project\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\logic\Scenario.java
+C:\Users\Staszek\IdeaProjects\IO-project\ioprojectarchitecture\src\main\java\pl\put\poznan\transformer\logic\Step.java

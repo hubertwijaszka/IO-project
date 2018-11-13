@@ -78,25 +78,40 @@ public class Scenario {
      * begin with/include keywords.
      * @param krok Step that we want to check.
      * @param p Array in which number of keywords,
-     *          steps containing keywords and steps
-     *          in general will be stored.
+     *          steps containing keywords , steps
+     *          in general and a depth of a scenario/a single step will be stored.
      * @param w List in which Steps that do not start with
      *          keyword will be stored.
      * @return amount of elements
      */
-    public int przeszukiwanie(Step krok, int[] p, List<String> w) // metoda sprawdza ile elementow w jednym kroku zawiera/zaczyna się od
+    public int przeszukiwanie(Step krok, int[] p, List<List<String>> w,int deepLevel,int curDeepLevel,String[]nr) // metoda sprawdza ile elementow w jednym kroku zawiera/zaczyna się od
     // słowa kluczowego
-    //param : 0 -> ile krokow
+    // deepLevel -> okresla jak gleboko ma sie zaglebic funkcja przeszukujaca graf
+    // deepLevel = -1 ->przeszukaj caly
+    // curDeepLevel -> obecny poziom zagłębienia
     {
+        System.out.println(krok.getText()+": "+curDeepLevel);
+
+        curDeepLevel++;
+        if(curDeepLevel>deepLevel && deepLevel>-1){curDeepLevel--;return 0;}// deepLevel jest wartoscia nieujemną
         //przeszukiwanie grafu
+        //uaktualniam newRodzic
+        String newRodzic=nr[0]+nr[1]+".";
+        //dodaje do scenariusza z numerami krok z danego poziomu
+        w.get(1).add(newRodzic+" "+krok.getText());
+        //sprawdzam, czy krok zawiera szukaną frazę
+        if(krok.getText().contains(nr[2]))w.get(2).add(newRodzic+" "+krok.getText());
         //sprawdzam, czy krok jest wadliwy ( jest taki, gdy nie zaczyna się od aktora systemowego )
-        if (zlyKrok(krok.getText(),actors,systemActor )) w.add(krok.getText());
+        if (zlyKrok(krok.getText(),actors,systemActor )) w.get(0).add(krok.getText());
         //ile jest ogolnie slow kluczowych
         p[0] += ileSlowKluczowych(krok.getText());
         //ile krokow zawiera choc jedno slowo kluczowe
         p[1] += zawieraSlowoKluczowe(krok.getText());
         //jesli ta funkcja zostala wywolana tzn. ze wystapil kolejny krok
         p[2]++;
+        //sprawdzam, czy osiagnięto nową maksymalną głebokośc grafu
+        if(curDeepLevel>p[3])p[3]=curDeepLevel;
+
         // podliczenie wszystkich krokow wykona sie poprawnie jesli w mainie() (czy gdziekolwiek indziej)
         // wywolane zostanie:
         //                      for(i=0;i<obiekt.steps.length;i++)
@@ -105,8 +120,14 @@ public class Scenario {
         //                      }
         int i;
         for (i = 0; i < krok.getSubsteps().length; i++) {
-            przeszukiwanie(krok.getSubsteps()[i], p, w);
+            nr[0]=newRodzic;nr[1]=Integer.toString(i+1);
+            if(deepLevel<0) //jesli przeszukuje caly scenariusz
+            {przeszukiwanie(krok.getSubsteps()[i], p, w,-1,curDeepLevel,nr);} //wartosc curDeepLevel nie ma znaczenia
+            else            //jesli przeszukuje do okreslonego poziomu
+            {przeszukiwanie(krok.getSubsteps()[i], p, w,deepLevel,curDeepLevel,nr);}
         }
+
+        curDeepLevel--; //?
         return 0;
     }
     /**

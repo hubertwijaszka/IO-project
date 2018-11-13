@@ -30,21 +30,46 @@ public class TextTransformerController {
 */
 
     @RequestMapping(value = "ileKrokow", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public String ileKrokow(@RequestBody Scenario scenario) {
-        return scenarioSerwis.ileKrokow(scenario);
+    public String ileKrokow(@RequestBody Scenario scenario,@RequestParam(value = "deepLevel", required=false , defaultValue = "-1") Integer deepLevel,
+                            @RequestParam(value = "ktory", required=false , defaultValue = "-1") Integer ktory ) {
+        return scenarioSerwis.ileKrokow(scenario,deepLevel,ktory-1,"");
     }
 
     @RequestMapping(value = "ileKrokowMaKeyword", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public String ileKrokowMaKeyword(@RequestBody Scenario scenario) {return scenarioSerwis.ileKrokowMaKeyword(scenario);}
+    public String ileKrokowMaKeyword(@RequestBody Scenario scenario,@RequestParam(value = "deepLevel", required=false,defaultValue = "-1") Integer deepLevel,
+                                     @RequestParam(value = "ktory", required=false , defaultValue = "-1") Integer ktory)
+    {
+        return scenarioSerwis.ileKrokowMaKeyword(scenario,deepLevel,ktory-1,"");
+    }
 
     @RequestMapping(value = "bledneKroki", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public List<String> bledneKroki(@RequestBody Scenario scenario) {
-        return scenarioSerwis.bledneKroki(scenario);
+    public List<String> bledneKroki(@RequestBody Scenario scenario,@RequestParam(value = "deepLevel", required=false,defaultValue = "-1") Integer deepLevel,
+                                    @RequestParam(value = "ktory", required=false , defaultValue = "-1") Integer ktory) {
+        return scenarioSerwis.bledneKroki(scenario,deepLevel,ktory-1,"");
+    }
 
+    @RequestMapping(value = "scenariuszDoPoziomu", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public List<String>scenariuszDoPoziomu(@RequestBody Scenario scenario,@RequestParam(value = "deepLevel", required=false,defaultValue = "-1") Integer deepLevel,
+                                           @RequestParam(value = "ktory", required=false , defaultValue = "-1") Integer ktory) {
+        return scenarioSerwis.scenariuszDoPoziomu(scenario,deepLevel,ktory-1,"");
     }
 
     @RequestMapping(value = "ileSlowKluczowych", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public String ileSlowKluczowych(@RequestBody Scenario scenario) {
-        return scenarioSerwis.ileSlowKluczowych(scenario);
+    public String ileSlowKluczowych(@RequestBody Scenario scenario,@RequestParam(value = "deepLevel", required=false,defaultValue = "-1") Integer deepLevel,
+                                    @RequestParam(value = "ktory", required=false , defaultValue = "-1") Integer ktory) {
+        return scenarioSerwis.ileSlowKluczowych(scenario,deepLevel,ktory-1,"");
+    }
+
+    @RequestMapping(value = "maxGlebokosc", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public String maxGlebokosc(@RequestBody Scenario scenario,@RequestParam(value = "deepLevel", required=false,defaultValue = "-1") Integer deepLevel,
+                               @RequestParam(value = "ktory", required=false , defaultValue = "-1") Integer ktory) {
+        return scenarioSerwis.maxGlebokosc(scenario,deepLevel,ktory-1,"");
+    }
+
+    @RequestMapping(value = "krokMaFraze", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public List<String>krokMaFraze(@RequestBody Scenario scenario,@RequestParam(value = "deepLevel", required=false,defaultValue = "-1") Integer deepLevel,
+                                   @RequestParam(value = "ktory", required=false , defaultValue = "-1") Integer ktory,
+                                   @RequestParam(value = "fraza", required=false , defaultValue = "") String fraza) {
+        return scenarioSerwis.krokMaFraze(scenario,deepLevel,ktory-1,fraza);
     }
 }
