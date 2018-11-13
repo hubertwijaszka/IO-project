@@ -1,2 +1,2 @@
 language: Java
-before_script: cd IO-project
+before_script: cd ioprojectarchitecture
