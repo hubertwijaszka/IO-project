@@ -82,13 +82,12 @@ public class Scenario {
      *          in general and a depth of a scenario/a single step will be stored.
      * @param w List in which Steps that do not start with
      *          keyword will be stored.
+     * @param deepLevel okresla jak gleboko ma sie zaglebic funkcja przeszukujaca graf, -1 ->przeszukaj caly
+     * @param curDeepLevel obecny poziom zagłębienia
      * @return amount of elements
      */
     public int przeszukiwanie(Step krok, int[] p, List<List<String>> w,int deepLevel,int curDeepLevel,String[]nr) // metoda sprawdza ile elementow w jednym kroku zawiera/zaczyna się od
     // słowa kluczowego
-    // deepLevel -> okresla jak gleboko ma sie zaglebic funkcja przeszukujaca graf
-    // deepLevel = -1 ->przeszukaj caly
-    // curDeepLevel -> obecny poziom zagłębienia
     {
         System.out.println(krok.getText()+": "+curDeepLevel);
 
