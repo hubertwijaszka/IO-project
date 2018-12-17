@@ -25,6 +25,7 @@ public class Scenario {
 
     /**
      * Method sets title of Scenario
+     * @param title tytul scenariusza
      */
     public void setTitle(String title) {
         this.title = title;
@@ -82,8 +83,9 @@ public class Scenario {
      *          in general and a depth of a scenario/a single step will be stored.
      * @param w List in which Steps that do not start with
      *          keyword will be stored.
-     * @param deepLevel okresla jak gleboko ma sie zaglebic funkcja przeszukujaca graf, -1 ->przeszukaj caly
+     * @param deepLevel okresla jak gleboko ma sie zaglebic funkcja przeszukujaca graf, -1 przeszukaj caly
      * @param curDeepLevel obecny poziom zagłębienia
+     * @param nr Array of string that contains iteration of a step
      * @return amount of elements
      */
     public int przeszukiwanie(Step krok, int[] p, List<List<String>> w,int deepLevel,int curDeepLevel,String[]nr) // metoda sprawdza ile elementow w jednym kroku zawiera/zaczyna się od
@@ -232,4 +234,3 @@ public class Scenario {
         return wyn;
     }
 }
-
